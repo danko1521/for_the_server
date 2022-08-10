@@ -7,9 +7,6 @@ from django.forms import BaseInlineFormSet
 from .models import Article, Thema, ArticleThema
 
 
-
-
-
 class ArticleThemaInlineFormset(BaseInlineFormSet):
     def clean(self):
         is_main = False
@@ -20,19 +17,20 @@ class ArticleThemaInlineFormset(BaseInlineFormSet):
                 else:
                     raise ValidationError('Основная тема возможна только одна.')
 
-            if not is_main:
-                raise ValidationError('Укажите основной раздел')
-
-        if len(self.forms) == 0:
-            raise ValidationError("Не указана тема")
-
-        return super().clean()
+        #     if not is_main:
+        #         raise ValidationError('Укажите основной раздел')
+        #
+        # if len(self.forms) == 0:
+        #     raise ValidationError("Не указана тема")
+        #
+        # return super().clean()
 
 
 class ArticleThemaInline(admin.TabularInline):
     model = ArticleThema
     formset = ArticleThemaInlineFormset
     extra = 0
+
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
