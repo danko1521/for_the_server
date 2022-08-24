@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'USER': 'danko1521',
         'PASSWORD': '795364',
         'NAME': 'hw_orm_migrat',
